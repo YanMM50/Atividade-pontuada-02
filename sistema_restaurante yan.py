@@ -57,6 +57,7 @@ def opcoes():
         return preco
 
 opcao = opcoes()
+
     
 
 
