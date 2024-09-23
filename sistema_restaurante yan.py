@@ -29,36 +29,58 @@ print("""
 def opcoes():
     while True:
         opcao = input("Digite uma opção: ")
+        preco = 0
+        soma = 0
         match(opcao):
             case "1":
-                preco = 20
+                preco += 20
                 print("Almôndega caseira.")
+                break
             case "2":
-                preco = 25
+                preco += 25
                 print("Arroz de forno.")
+                break
             case "3":
-                preco = 50
+                preco += 50
                 print("Bolo de carne vegano.")
+                break
             case "4":
-                preco = 75
+                preco += 75
                 print("Costelinha de porco.")
+                break
             case "5":
-                preco = 20
+                preco += 20
                 print("File de frango.")
+                break
             case "6":
-                preco = 80
+                preco += 80
                 print("Frango xadrez.")
+                break
             case "7":
-                preco = 90
+                preco += 90
                 print("Tutu de feijão.")
+                break
+            case "0":
+                soma += preco
+                break
             case _:
                 print("Pedido invalido, digite novamente.")
-                opcao = input("Digite um opção: ")
-        return preco
+                input("Digite um opção: ")
+                break
+        return soma
 
 opcao = opcoes()
 
     
+opcao2 = input("Deseja fazer um novo pedido? ").lower() .strip()
+
+def verificando_novamente(a):
+    while True:
+        if a == "sim":    
+            opcoes()
+        else: 
+            break    
 
 
 
+verificando = verificando_novamente(opcao2)
