@@ -29,30 +29,35 @@ print("""
 def opcoes():
     while True:
         opcao = input("Digite uma opção: ")
-        match (opcao):
+        match(opcao):
             case "1":
-                resultado = "Almôndega caseira."
+                preco = 20
                 print("Almôndega caseira.")
             case "2":
-                resultado = "Arroz de forno."
+                preco = 25
                 print("Arroz de forno.")
             case "3":
-                resultado = "Bolo de carne vegano."
-                resultado = "Bolo de carne vegano."
+                preco = 50
+                print("Bolo de carne vegano.")
             case "4":
-                resultado = "Costelinha de porco."
-                resultado = "Costelinha de porco."
+                preco = 75
+                print("Costelinha de porco.")
             case "5":
-                resultado = "File de frango."
+                preco = 20
+                print("File de frango.")
             case "6":
-                resultado = "Frango xadrez."
+                preco = 80
+                print("Frango xadrez.")
             case "7":
-                resultado = "Tutu de feijão."
+                preco = 90
+                print("Tutu de feijão.")
             case _:
                 print("Pedido invalido, digite novamente.")
-        return resultado
+                opcao = input("Digite um opção: ")
+        return preco
 
 opcao = opcoes()
     
+
 
 
