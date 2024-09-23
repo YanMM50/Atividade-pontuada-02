@@ -8,7 +8,7 @@ Nome completo dos componentes.
 """
 
 
-import os
+import osg
 
 # Limpa o terminal.
 os.system("cls || clear") 
