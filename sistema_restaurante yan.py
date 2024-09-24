@@ -56,7 +56,7 @@ def opcoes(carrinho, pratos_selecionados):
                 pratos_selecionados.append("Tutu de feijão")
             case _:
                 print("Pedido inválido, digite novamente.")
-                opcoes()
+                opcao = input("Digite uma opção: ")
 
         print(f"Você pediu: {pratos_selecionados[-1]} - Preço: R$ {carrinho[-1]:.2f}")
 
