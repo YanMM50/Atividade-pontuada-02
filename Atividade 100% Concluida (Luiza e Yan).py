@@ -10,12 +10,13 @@ Nome completo dos componentes.
 
 
 import os
+import time
 
 # Limpa o terminal.
 os.system("cls || clear") 
 
 def cardapio():
-    print(""" 
+    print("""\033[1;33m
                  Cardápio    
 codigo   |        pratos           |   preços  
     1      Almôndega caseira        R$: 20,00
@@ -25,7 +26,7 @@ codigo   |        pratos           |   preços
     5      File de frango           R$: 20,00
     6      Frango xadrez            R$: 80,00
     7      Tutu de feijão           R$: 90,00
-""")
+\033[m""")
 
 def opcoes(carrinho, pratos_selecionados):
     while True:
@@ -109,6 +110,9 @@ print("Pratos escolhidos:")
 for i, prato in enumerate(pratos_selecionados):
     print(f"{i+1} - {prato}")
 
+for i in range(101):
+        print(f"\rProcessando: {i}%", end="")
+        time.sleep(0.05)  
 
 print(f"\nSubtotal: R$ {preco_total:.2f}")
 print(f"Forma de pagamento: {forma_pagamento}")
