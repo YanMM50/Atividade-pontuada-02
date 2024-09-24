@@ -109,6 +109,7 @@ print("Pratos escolhidos:")
 for i, prato in enumerate(pratos_selecionados):
     print(f"{i+1} - {prato}")
 
+
 print(f"\nSubtotal: R$ {preco_total:.2f}")
 print(f"Forma de pagamento: {forma_pagamento}")
 if forma_pagamento == "À Vista":

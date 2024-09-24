@@ -8,76 +8,116 @@ Nome completo dos componentes.
 """
 
 
+
 import os
+import time
 
 # Limpa o terminal.
 os.system("cls || clear") 
 
-print(""" 
-        Cardápio
-1 - Almôndega caseira R$: 20,00
-2 - Arroz de forno R$: 25,00
-3 - Bolo de carne vegano R$: 50,00
-4 - Costelinha de porco R$: 75,00
-5 - File de frango R$: 20,00
-6 - Frango xadrez R$: 80,00
-7 - Tutu de feijão R$: 90,00
-""")
+def cardapio():
+    print("""\033[1;33m
+                 Cardápio    
+codigo   |        pratos           |   preços  
+    1      Almôndega caseira        R$: 20,00
+    2      Arroz de forno           R$: 25,00
+    3      Bolo de carne vegano     R$: 50,00  
+    4      Costelinha de porco      R$: 75,00
+    5      File de frango           R$: 20,00
+    6      Frango xadrez            R$: 80,00
+    7      Tutu de feijão           R$: 90,00
+\033[m""")
 
-
-
-def opcoes():
+def opcoes(carrinho, pratos_selecionados):
     while True:
+        cardapio()
         opcao = input("Digite uma opção: ")
-        match(opcao):
+        
+        match opcao:
             case "1":
-                preco = 20
-                print("Almôndega caseira.")
+                carrinho.append(20)
+                pratos_selecionados.append("Almôndega caseira")
             case "2":
-                preco = 25
-                print("Arroz de forno.")
+                carrinho.append(25)
+                pratos_selecionados.append("Arroz de forno")
             case "3":
-                preco = 50
-                print("Bolo de carne vegano.")
+                carrinho.append(50)
+                pratos_selecionados.append("Bolo de carne vegano")
             case "4":
-                preco = 75
-                print("Costelinha de porco.")
+                carrinho.append(75)
+                pratos_selecionados.append("Costelinha de porco")
             case "5":
-                preco = 20
-                print("File de frango.")
+                carrinho.append(20)
+                pratos_selecionados.append("File de frango")
             case "6":
-                preco = 80
-                print("Frango xadrez.")
+                carrinho.append(80)
+                pratos_selecionados.append("Frango xadrez")
             case "7":
-                preco = 90
-                print("Tutu de feijão.")
+                carrinho.append(90)
+                pratos_selecionados.append("Tutu de feijão")
             case _:
-                print("Pedido invalido, digite novamente.")
-                opcao = input("Digite um opção: ")
-        return preco
+                print("Pedido inválido, digite novamente.")
+                opcao = input("Digite uma opção: ")
 
-opcao = opcoes()
+        print(f"Você pediu: {pratos_selecionados[-1]} - Preço: R$ {carrinho[-1]:.2f}")
 
-def opcao_pagamento():
-    print("""
-    Forma de pagamento:
-    1. À vista      
-    2. Parcelado""")
+        opcao2 = input("""\nDeseja pedir novamente:
+            1 - Sim
+            2 - Não
+            0 - Encerrar
+            R: """)
+        
+        if opcao2 == "2":
+            return sum(carrinho)
+        elif opcao2 == "0":
+            return sum(carrinho)
 
-    opcao = input("Digite a sua forma de pagamento: ")
+carrinho = []
+pratos_selecionados = []
+preco_total = opcoes(carrinho, pratos_selecionados)
 
-    match(opcao):
-        case "À vista":
-            resultado = "Pagamento à vista"
-        case "Parcelado":
-            resultado = "Pagamento parcelado"
-        case _:
-            resultado = "Essa opção não existe."
-            return resultado
-
-opcao = (opcao_pagamento)
-
+def forma_de_pagamento(preco_total):
+    forma_pagamento = input("""\n             Forma de pagamento
+1 - À Vista (10% de Desconto)
+2 - Cartão de Crédito (10% de Acréscimo)
+R: """)
     
+    match forma_pagamento:
+        case "1":
+            desconto = preco_total * 0.10
+            valor = preco_total * 0.90
+            forma = "À Vista"
+            acréscimo = 0
+        case "2":
+            acréscimo = preco_total * 0.10
+            valor = preco_total * 1.10
+            forma = "Cartão de Crédito"
+            desconto = 0
+        case _:
+            print("Opção inválida. O total será considerado sem alteração.")
+            valor = preco_total
+            forma = "Nenhuma"
+            desconto = 0
+            acréscimo = 0
+    
+    return valor, forma, desconto, acréscimo
 
+valor_total, forma_pagamento, desconto, acréscimo = forma_de_pagamento(preco_total)
 
+# Exibindo os resultados
+print("\nResultados:")
+print("Pratos escolhidos:")
+for i, prato in enumerate(pratos_selecionados):
+    print(f"{i+1} - {prato}")
 
+for i in range(101):
+        print(f"\rProcessando: {i}%", end="")
+        time.sleep(0.05)  
+
+print(f"\nSubtotal: R$ {preco_total:.2f}")
+print(f"Forma de pagamento: {forma_pagamento}")
+if forma_pagamento == "À Vista":
+    print(f"Desconto aplicado: R$ {desconto:.2f}")
+else:
+    print(f"Acréscimo aplicado: R$ {acréscimo:.2f}")
+print(f"Valor final a ser pago: R$ {valor_total:.2f}")
