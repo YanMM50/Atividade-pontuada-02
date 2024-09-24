@@ -1,3 +1,14 @@
+"""
+Informe o número da turma: 
+Turma - 93313
+
+Nome completo dos componentes.
+1 - Maria Luiza Campos
+2 - Yan Mendes Matos
+"""
+
+
+
 import os
 
 # Limpa o terminal.
