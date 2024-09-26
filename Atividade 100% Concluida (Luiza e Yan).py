@@ -115,7 +115,7 @@ for i in range(101):
         time.sleep(0.05)  
 
 print(f"\nSubtotal: R$ {preco_total:.2f}")
-print(f"Forma de pagamento: {forma_pagamento}")
+print(f"\nForma de pagamento: {forma_pagamento}")
 if forma_pagamento == "À Vista":
     print(f"Desconto aplicado: R$ {desconto:.2f}")
 else:
